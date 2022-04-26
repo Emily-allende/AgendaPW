@@ -2,12 +2,12 @@ public class Contacto {
 
 	private String nombre;
 	private String telefono;
-	private String gmail;
+	private String email;
 
-	public Contacto(String nombre, String telefono, String gmail) {
+	public Contacto(String nombre, String telefono, String email) {
 		this.nombre = nombre;
 		this.telefono = telefono;
-		this.gmail = gmail;
+		this.email = email;
 	}
 	public String getNombre() {
 		return nombre;
@@ -21,11 +21,11 @@ public class Contacto {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	public String getGmail() {
-		return gmail;
+	public String getemail() {
+		return email;
 	}
-	public void setGmail(String gmail) {
-		this.gmail = gmail;
+	public void setemail(String email) {
+		this.email = email;
 	}
 	
 	public boolean equals(Contacto c) {
@@ -34,8 +34,10 @@ public class Contacto {
 		}
 		return false;
 	}
+
+  // esto de donde lo sacaste??
 	@Override
 	public String toString(){
-		return "nombre"+nombre+ ", telefono"+ telefono +", gmail";
+		return "nombre"+nombre+ ", telefono"+ telefono +", email";
 	}
 }

@@ -1,37 +1,28 @@
 public class Agenda{
     private Contacto contactos[];
+    private int cantidadContactos;
 	public Agenda() {
+    cantidadContactos = 0;
 		this.contactos= new Contacto[256];
 	}
 	
+  // que te parece este refactor?
 	public void añadirContacto(Contacto c) {
-		boolean encontrado= false;
-		for(int i=0;i<contactos.length && !encontrado;i++) {
-			if(contactos[i]==null) {
-				contactos[i]=c;
-				encontrado=true;
-			}
-		}
-		if(encontrado) {
-			System.out.println("Se ha añadido");
-		}else {
-			System.out.println("No se ha podido añadir");
-		}
+		if (cantidadContactos >= contactos.length) {
+      System.out.println("No se ha podido añadir porque...");
+      return;
+    }
+    contactos[cantidadContactos] = c;
+    cantidadContactos += 1;
+    System.out.println("Se ha añadido");
 	}
-	
-	public boolean existeContacto(Contacto c) {
-		for(int i=0;i<contactos.length;i++) {
-			if(contactos[i]!=null && c.equals(contactos[i])) {
-				return true;
-			}
-		}
-		return false;
-	}
+  
+	// No lo uso.
 	public void bucarContacto(String nombre) {
         boolean encontrado=false;
         for(int i=0;i<contactos.length && !encontrado;i++) {
 			if(contactos[i]!=null && contactos[1].getNombre().equalsIgnoreCase(nombre)) {
-                System.out.print("Su telefono es: "+ contactos[i].getTelefono() + " y su gmail es: "+ contactos[i].getGmail());
+                System.out.print("Su telefono es: "+ contactos[i].getTelefono() + " y su email es: "+ contactos[i].getemail());
                 encontrado=true;
 			}
         }
@@ -39,12 +30,5 @@ public class Agenda{
             System.out.print("No se ha encontrado");
         }
     }
-    public boolean agendaLlena(){
-        for(int i=0;i<contactos.length;i++) {
-			if(contactos[i]!=null) {
-                return false;
-            }
-        }
-        return true;
-    }
-    }
+    // No lo uso.
+}
