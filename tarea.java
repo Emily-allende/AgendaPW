@@ -5,12 +5,9 @@ public class tarea {
         final Scanner sca = new Scanner(System.in);
         System.out.println("Ingrese su nombre");
         usu=sca.nextLine();
-        String nombre;
-        String telefono;
-        String gmail;
+        // las variables no van definidas arriba, tienen que ir lo mas cerca de deonde se usa.
 
         Agenda agendita=new Agenda();
-        Contacto c;
         int opi;
 
         do{
@@ -22,21 +19,31 @@ public class tarea {
             System.out.println("Ingrese una opcion");
             opi=sca.nextInt();
             switch(opi){
-                case 1:
-                    System.out.print("Ingrese el nombre:");
-                    nombre= sca.nextLine();
-                    System.out.print("Ingrese el telefono:");
-                    telefono= sca.nextLine();
-                    System.out.print("Ingrese el gmail:");
-                    gmail= sca.nextLine();
-                    c= new Contacto(nombre, telefono, gmail);
-                    agendita.añadirContacto(c);
-                    break;
-                case 2:
-                    System.out.print("Ingrese el nombre de la persona");
+                case 1: {
+                  String nombre, telefono, email;
+                  // para forzar que ingrese un nombre
+                  System.out.print("Ingrese el nombre:");
+                  do {
                     nombre=sca.nextLine();
-                    agendita.bucarContacto(nombre);
-                    break;
+                  } while (nombre.isEmpty());
+                  
+                  // lo mismo para el telefono
+                  System.out.print("Ingrese el telefono:");
+                  telefono= sca.nextLine();
+                  System.out.print("Ingrese el email:");
+                  email= sca.nextLine();
+                  agendita.añadirContacto(new Contacto(nombre, telefono, email));
+                  break;
+                }
+                // 
+                case 2: {
+                  String nombre;
+                  System.out.print("Ingrese el nombre de la persona");
+                  nombre=sca.nextLine();
+                  agendita.bucarContacto(nombre);
+                  break;
+
+                }
                 case 3:
                     System.out.println("¡ADIOS :)!");
                     break;
